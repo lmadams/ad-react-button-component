@@ -1,26 +1,11 @@
-import React from 'react';
-import { storiesOf, action } from '@kadira/storybook';
-import { Button, AgrInput } from '../index';
+import { configure } from '@kadira/storybook';
 
-storiesOf('Button', module)
-    .add('default view', () => (
-        <Button onClick={ action('button clicked') }>Hello</Button>
-    ))
-    .add('some emojies as the text', () => (
-        <Button>😀 😎 👍 💯</Button>
-    ))
-    .add('custom styles', () => {
-        const style = {
-            fontSize: 20,
-            textTransform: 'uppercase',
-            color: '#FF8833',
-        };
-        return (
-            <Button style={ style }>Hello</Button>
-        );
-    });
+function requireAll(requireContext) {
+    return requireContext.keys().map(requireContext);
+}
 
-storiesOf('AgrInput', module)
-    .add('Input padrao', () => (
-        <AgrInput></AgrInput>
-    ));
+function loadStories() {
+    requireAll(require.context("..", true, /\\*\.story\.jsx?$/));
+}
+
+configure(loadStories, module);
