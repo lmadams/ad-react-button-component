@@ -10,12 +10,14 @@ const buttonStyles = {
 };
 
 const Button = ({ children, onClick, style = {} }) => (
-    <button
-        style={{ ...buttonStyles, ...style }}
-        onClick={onClick}
-    >
-        {children}
-    </button>
+    <div>
+        <button
+            style={{ ...buttonStyles, ...style }}
+            onClick={onClick}
+        >
+            {children}
+        </button>
+    </div>
 );
 
 Button.propTypes = {
