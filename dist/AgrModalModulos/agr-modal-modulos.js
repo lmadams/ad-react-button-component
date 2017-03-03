@@ -28,9 +28,46 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-require('../AgrModalModulos/agr-modal-modulos.css');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var appsDiv = {
+    minHeight: '196px',
+    width: '280px',
+    background: '#fff',
+    position: 'absolute',
+    right: '16px',
+    top: '72px',
+    border: '1px solid rgba(0, 0, 0, .2)',
+    color: '#000',
+    padding: '20px'
+};
+
+var appsModulosUl = {
+    height: '100%',
+    listStyle: 'none outside none',
+    position: 'relative',
+
+    background: '#fff',
+    margin: '0',
+    minHeight: '100px',
+    padding: '5px',
+    textAlign: 'left',
+    whiteSpace: 'normal'
+};
+
+var appsModuloButton = {
+    display: 'inline-block',
+    verticalAlign: 'top',
+    zIndex: '999',
+    height: '70px',
+    width: '70px',
+    margin: '10px',
+
+    borderRadius: '3px',
+    border: 'solid 1px rgb(224, 224, 224)',
+    backgroundColor: 'white',
+    cursor: 'pointer'
+};
 
 var AgrModalModulos = function (_Component) {
     (0, _inherits3.default)(AgrModalModulos, _Component);
@@ -61,6 +98,35 @@ var AgrModalModulos = function (_Component) {
         value: function render() {
             var _this2 = this;
 
+            var modulosAgrotisHTML = null;
+            if (this.state.exibirApp) {
+                modulosAgrotisHTML = _react2.default.createElement(
+                    'div',
+                    { style: appsDiv },
+                    _react2.default.createElement(
+                        'div',
+                        { style: appsModulosUl },
+                        this.state.modulos.map(function (modulo) {
+                            return _react2.default.createElement(
+                                'button',
+                                {
+                                    style: appsModuloButton,
+                                    key: modulo.nome,
+                                    onClick: function onClick() {
+                                        return AgrModalModulos.onClickModulo(modulo.nome);
+                                    }
+                                },
+                                _react2.default.createElement(
+                                    'span',
+                                    { style: { textTransform: 'capitalize' } },
+                                    modulo.nome
+                                )
+                            );
+                        })
+                    )
+                );
+            }
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -73,31 +139,7 @@ var AgrModalModulos = function (_Component) {
                     },
                     'Modulos'
                 ),
-                _react2.default.createElement(
-                    'div',
-                    { className: this.state.exibirApp ? 'apps-div' : 'apps-div not-show-apps' },
-                    _react2.default.createElement(
-                        'div',
-                        { className: 'apps-modulos-ul' },
-                        this.state.modulos.map(function (modulo) {
-                            return _react2.default.createElement(
-                                'button',
-                                {
-                                    className: 'apps-modulo-button',
-                                    key: modulo.nome,
-                                    onClick: function onClick() {
-                                        return AgrModalModulos.onClickModulo(modulo.nome);
-                                    }
-                                },
-                                _react2.default.createElement(
-                                    'span',
-                                    { className: 'btn-modulo-name' },
-                                    modulo.nome
-                                )
-                            );
-                        })
-                    )
-                )
+                modulosAgrotisHTML
             );
         }
     }]);

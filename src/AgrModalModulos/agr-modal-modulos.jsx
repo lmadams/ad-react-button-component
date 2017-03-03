@@ -1,5 +1,43 @@
 import React, { Component } from 'react';
-import '../AgrModalModulos/agr-modal-modulos.css';
+
+const appsDiv = {
+    minHeight: '196px',
+    width: '280px',
+    background: '#fff',
+    position: 'absolute',
+    right: '16px',
+    top: '72px',
+    border: '1px solid rgba(0, 0, 0, .2)',
+    color: '#000',
+    padding: '20px'
+};
+
+const appsModulosUl = {
+    height: '100%',
+    listStyle: 'none outside none',
+    position: 'relative',
+
+    background: '#fff',
+    margin: '0',
+    minHeight: '100px',
+    padding: '5px',
+    textAlign: 'left',
+    whiteSpace: 'normal'
+};
+
+const appsModuloButton = {
+    display: 'inline-block',
+    verticalAlign: 'top',
+    zIndex: '999',
+    height: '70px',
+    width: '70px',
+    margin: '10px',
+
+    borderRadius: '3px',
+    border: 'solid 1px rgb(224, 224, 224)',
+    backgroundColor: 'white',
+    cursor: 'pointer'
+};
 
 class AgrModalModulos extends Component {
 
@@ -22,6 +60,31 @@ class AgrModalModulos extends Component {
     }
 
     render() {
+        let modulosAgrotisHTML = null;
+        if (this.state.exibirApp) {
+            modulosAgrotisHTML = (
+                <div style={ appsDiv }>
+                    <div style={ appsModulosUl }>
+                        {
+                            this.state.modulos.map(
+                                modulo => (
+                                    <button
+                                        style={ appsModuloButton }
+                                        key={modulo.nome}
+                                        onClick={() => AgrModalModulos.onClickModulo(modulo.nome)}
+                                    >
+                                            <span style={ { textTransform: 'capitalize' } }>
+                                                {modulo.nome}
+                                            </span>
+                                    </button>
+                                ),
+                            )
+                        }
+                    </div>
+                </div>
+            )
+        }
+
         return (
             <div>
                 <button
@@ -29,26 +92,7 @@ class AgrModalModulos extends Component {
                 >
                     Modulos
                 </button>
-
-                <div className={(this.state.exibirApp ? 'apps-div' : 'apps-div not-show-apps')}>
-                    <div className="apps-modulos-ul">
-                        {
-                            this.state.modulos.map(
-                                modulo => (
-                                    <button
-                                        className="apps-modulo-button"
-                                        key={modulo.nome}
-                                        onClick={() => AgrModalModulos.onClickModulo(modulo.nome)}
-                                    >
-                                        <span className="btn-modulo-name">
-                                            {modulo.nome}
-                                        </span>
-                                    </button>
-                                ),
-                            )
-                        }
-                    </div>
-                </div>
+                {modulosAgrotisHTML}
             </div>
         )
     }
