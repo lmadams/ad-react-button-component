@@ -1,10 +1,11 @@
 import React from 'react';
+import TextField from 'material-ui/TextField';
 
-const AgrInput = ({ style = {} }) => (
-    <input
-        style={{ ...style }}
+const AgrInput = () => (
+    <TextField
+        hintText="Hint maroto"
     >
-    </input>
+    </TextField>
 );
 
 AgrInput.propTypes = {
