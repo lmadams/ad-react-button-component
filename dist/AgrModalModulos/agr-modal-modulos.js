@@ -28,6 +28,14 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _apps = require('material-ui/svg-icons/navigation/apps');
+
+var _apps2 = _interopRequireDefault(_apps);
+
+var _IconButton = require('material-ui/IconButton');
+
+var _IconButton2 = _interopRequireDefault(_IconButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var appsDiv = {
@@ -131,13 +139,14 @@ var AgrModalModulos = function (_Component) {
                 'div',
                 null,
                 _react2.default.createElement(
-                    'button',
+                    _IconButton2.default,
                     {
+                        tooltip: 'M\xF3dulos Agrotis',
                         onClick: function onClick() {
                             return _this2.setState({ exibirApp: !_this2.state.exibirApp });
                         }
                     },
-                    'Modulos'
+                    _react2.default.createElement(_apps2.default, null)
                 ),
                 modulosAgrotisHTML
             );

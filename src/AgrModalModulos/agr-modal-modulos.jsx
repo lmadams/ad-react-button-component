@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import Apps from 'material-ui/svg-icons/navigation/apps';
+import IconButton from 'material-ui/IconButton';
+
 const appsDiv = {
     minHeight: '196px',
     width: '280px',
@@ -87,11 +90,13 @@ class AgrModalModulos extends Component {
 
         return (
             <div>
-                <button
+                <IconButton
+                    tooltip="Módulos Agrotis"
                     onClick={() => this.setState({ exibirApp: !this.state.exibirApp })}
                 >
-                    Modulos
-                </button>
+                    <Apps />
+                </IconButton>
+
                 {modulosAgrotisHTML}
             </div>
         )

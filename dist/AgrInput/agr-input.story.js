@@ -8,6 +8,8 @@ var _storybook = require('@kadira/storybook');
 
 var _storybookAddonMaterialUi = require('storybook-addon-material-ui');
 
+var _colors = require('material-ui/styles/colors');
+
 var _index = require('../index');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -15,13 +17,24 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var newTheme = {
     themeName: 'Grey Theme',
     palette: {
-        primary1Color: '#00bcd4',
-        alternateTextColor: '#4a4a4a',
-        canvasColor: '#616161',
-        textColor: '#bdbdbd',
-        secondaryTextColor: 'rgba(255, 255, 255, 0.54)',
-        disabledColor: '#757575',
-        accent1Color: '#607d8b'
+        primary1Color: _colors.teal700,
+        primary2Color: _colors.teal400,
+        primary3Color: _colors.grey100,
+        secundary1Color: _colors.grey500,
+        secundary2Color: _colors.grey50,
+        secundary3Color: _colors.grey300,
+        accent1Color: _colors.orange800,
+        accent2Color: _colors.grey100,
+        accent3Color: _colors.grey500,
+        textColor: _colors.darkBlack,
+        alternateTextColor: _colors.white,
+        canvasColor: _colors.white,
+        borderColor: _colors.grey300,
+        pickerHeaderColor: _colors.cyan500,
+        shadowColor: _colors.fullBlack
+    },
+    toolbar: {
+        height: 64
     }
 };
 
